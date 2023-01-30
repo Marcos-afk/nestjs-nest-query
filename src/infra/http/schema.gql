@@ -1,0 +1,269 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateManyStudentsInput {
+  """Array of records to create"""
+  students: [CreateStudentInput!]!
+}
+
+input CreateOneStudentInput {
+  """The record to create"""
+  student: CreateStudentInput!
+}
+
+input CreateStudentInput {
+  key: String!
+  name: String!
+}
+
+input DateFieldComparison {
+  between: DateFieldComparisonBetween
+  eq: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  is: Boolean
+  isNot: Boolean
+  lt: DateTime
+  lte: DateTime
+  neq: DateTime
+  notBetween: DateFieldComparisonBetween
+  notIn: [DateTime!]
+}
+
+input DateFieldComparisonBetween {
+  lower: DateTime!
+  upper: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type DeleteManyResponse {
+  """The number of records deleted."""
+  deletedCount: Int!
+}
+
+input DeleteManyStudentsInput {
+  """Filter to find records to delete"""
+  filter: StudentDeleteFilter!
+}
+
+input DeleteOneStudentInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+type Mutation {
+  createManyStudents(input: CreateManyStudentsInput!): [Student!]!
+  createOneStudent(input: CreateOneStudentInput!): Student!
+  deleteManyStudents(input: DeleteManyStudentsInput!): DeleteManyResponse!
+  deleteOneStudent(input: DeleteOneStudentInput!): StudentDeleteResponse!
+  updateManyStudents(input: UpdateManyStudentsInput!): UpdateManyResponse!
+  updateOneStudent(input: UpdateOneStudentInput!): Student!
+}
+
+type OffsetPageInfo {
+  """true if paging forward and there are more records."""
+  hasNextPage: Boolean
+
+  """true if paging backwards and there are more records."""
+  hasPreviousPage: Boolean
+}
+
+input OffsetPaging {
+  """Limit the number of records returned"""
+  limit: Int
+
+  """Offset to start returning records from"""
+  offset: Int
+}
+
+type Query {
+  student(
+    """The id of the record to find."""
+    id: ID!
+  ): Student
+  students(
+    """Specify to filter the records returned."""
+    filter: StudentFilter! = {}
+
+    """Limit or page results."""
+    paging: OffsetPaging! = {limit: 10}
+
+    """Specify to sort results."""
+    sorting: [StudentSort!]! = []
+  ): StudentConnection!
+}
+
+"""Sort Directions"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+"""Sort Nulls Options"""
+enum SortNulls {
+  NULLS_FIRST
+  NULLS_LAST
+}
+
+input StringFieldComparison {
+  eq: String
+  gt: String
+  gte: String
+  iLike: String
+  in: [String!]
+  is: Boolean
+  isNot: Boolean
+  like: String
+  lt: String
+  lte: String
+  neq: String
+  notILike: String
+  notIn: [String!]
+  notLike: String
+}
+
+type Student {
+  created_at: DateTime!
+  deleted_at: DateTime!
+  id: String!
+  key: String!
+  name: String!
+  updated_at: DateTime!
+}
+
+type StudentAggregateGroupBy {
+  created_at: DateTime
+  deleted_at: DateTime
+  id: String
+  key: String
+  name: String
+  updated_at: DateTime
+}
+
+type StudentConnection {
+  """Array of nodes."""
+  nodes: [Student!]!
+
+  """Paging information"""
+  pageInfo: OffsetPageInfo!
+
+  """Fetch total count of records"""
+  totalCount: Int!
+}
+
+type StudentCountAggregate {
+  created_at: Int
+  deleted_at: Int
+  id: Int
+  key: Int
+  name: Int
+  updated_at: Int
+}
+
+input StudentDeleteFilter {
+  and: [StudentDeleteFilter!]
+  created_at: DateFieldComparison
+  deleted_at: DateFieldComparison
+  id: StringFieldComparison
+  key: StringFieldComparison
+  name: StringFieldComparison
+  or: [StudentDeleteFilter!]
+  updated_at: DateFieldComparison
+}
+
+type StudentDeleteResponse {
+  created_at: DateTime
+  deleted_at: DateTime
+  id: String
+  key: String
+  name: String
+  updated_at: DateTime
+}
+
+input StudentFilter {
+  and: [StudentFilter!]
+  created_at: DateFieldComparison
+  deleted_at: DateFieldComparison
+  id: StringFieldComparison
+  key: StringFieldComparison
+  name: StringFieldComparison
+  or: [StudentFilter!]
+  updated_at: DateFieldComparison
+}
+
+type StudentMaxAggregate {
+  created_at: DateTime
+  deleted_at: DateTime
+  id: String
+  key: String
+  name: String
+  updated_at: DateTime
+}
+
+type StudentMinAggregate {
+  created_at: DateTime
+  deleted_at: DateTime
+  id: String
+  key: String
+  name: String
+  updated_at: DateTime
+}
+
+input StudentSort {
+  direction: SortDirection!
+  field: StudentSortFields!
+  nulls: SortNulls
+}
+
+enum StudentSortFields {
+  created_at
+  deleted_at
+  id
+  key
+  name
+  updated_at
+}
+
+input StudentUpdateFilter {
+  and: [StudentUpdateFilter!]
+  created_at: DateFieldComparison
+  deleted_at: DateFieldComparison
+  id: StringFieldComparison
+  key: StringFieldComparison
+  name: StringFieldComparison
+  or: [StudentUpdateFilter!]
+  updated_at: DateFieldComparison
+}
+
+type UpdateManyResponse {
+  """The number of records updated."""
+  updatedCount: Int!
+}
+
+input UpdateManyStudentsInput {
+  """Filter used to find fields to update"""
+  filter: StudentUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateStudentInput!
+}
+
+input UpdateOneStudentInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateStudentInput!
+}
+
+input UpdateStudentInput {
+  id: String
+  key: String
+  name: String
+}

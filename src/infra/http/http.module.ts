@@ -1,3 +1,4 @@
+import { StudentsModule } from '@application/students/students.module';
 import { DatabaseModule } from '@infra/database/database.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
@@ -12,6 +13,7 @@ import { join } from 'path';
       autoSchemaFile: join(process.cwd(), 'src/infra/http/schema.gql'),
       sortSchema: true,
     }),
+    StudentsModule,
   ],
   providers: [],
 })

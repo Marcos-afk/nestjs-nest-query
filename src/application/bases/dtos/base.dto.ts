@@ -11,7 +11,4 @@ export class BaseDTO {
 
   @FilterableField()
   updated_at: Date;
-
-  @FilterableField()
-  deleted_at: Date;
 }

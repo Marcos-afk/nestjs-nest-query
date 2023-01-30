@@ -1,14 +1,13 @@
 import {
   CreateDateColumn,
-  DeleteDateColumn,
   Entity,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
 export class BaseEntity {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @CreateDateColumn()
@@ -16,7 +15,4 @@ export class BaseEntity {
 
   @UpdateDateColumn()
   updated_at: Date;
-
-  @DeleteDateColumn()
-  deleted_at: Date;
 }
