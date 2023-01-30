@@ -2,9 +2,9 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-# Nestjs with Graphql
+# Nestjs with Nestsjs-QUey
 
-Api de estudos desenvolvida com Nest.js e Graphql. Incluindo também testes unitários, arquitetura limpa e aplicação de conceitos do solid.
+Api de estudos desenvolvida com Nest.js e Nestjs-Query. Incluindo também testes unitários, arquitetura limpa e aplicação de conceitos do solid.
 
 ## Installation
 
