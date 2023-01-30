@@ -21,8 +21,11 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nestjs-query/core": "^0.30.0",
+    "@nestjs-query/query-graphql": "^0.30.0",
+    "@nestjs-query/query-typeorm": "^0.30.0",
     "@nestjs/apollo": "^10.1.7",
-    "@nestjs/common": "^9.0.0",
+    "@nestjs/common": "^9.2.1",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/graphql": "^10.1.7",
@@ -32,8 +35,10 @@
     "bcryptjs": "^2.4.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "dataloader": "^2.1.0",
     "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
+    "graphql-subscriptions": "^2.0.0",
     "graphql-tools": "^8.3.15",
     "pg": "^8.8.0",
     "reflect-metadata": "^0.1.13",
