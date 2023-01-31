@@ -1,3 +1,4 @@
+import { ContentsModule } from '@application/contents/contents.module';
 import { DisciplinesModule } from '@application/disciplines/disciplines.module';
 import { LessonsModule } from '@application/lessons/lessons.module';
 import { StudentsModule } from '@application/students/students.module';
@@ -18,6 +19,7 @@ import { join } from 'path';
     StudentsModule,
     DisciplinesModule,
     LessonsModule,
+    ContentsModule,
   ],
   providers: [],
 })
