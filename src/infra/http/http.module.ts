@@ -1,3 +1,4 @@
+import { DisciplinesModule } from '@application/disciplines/disciplines.module';
 import { StudentsModule } from '@application/students/students.module';
 import { DatabaseModule } from '@infra/database/database.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
@@ -14,6 +15,7 @@ import { join } from 'path';
       sortSchema: true,
     }),
     StudentsModule,
+    DisciplinesModule,
   ],
   providers: [],
 })
