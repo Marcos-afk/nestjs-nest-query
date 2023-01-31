@@ -6,9 +6,18 @@ input CreateDisciplineInput {
   name: String!
 }
 
+input CreateLessonInput {
+  description: String!
+}
+
 input CreateManyDisciplinesInput {
   """Array of records to create"""
   disciplines: [CreateDisciplineInput!]!
+}
+
+input CreateManyLessonsInput {
+  """Array of records to create"""
+  lessons: [CreateLessonInput!]!
 }
 
 input CreateManyStudentsInput {
@@ -19,6 +28,11 @@ input CreateManyStudentsInput {
 input CreateOneDisciplineInput {
   """The record to create"""
   discipline: CreateDisciplineInput!
+}
+
+input CreateOneLessonInput {
+  """The record to create"""
+  lesson: CreateLessonInput!
 }
 
 input CreateOneStudentInput {
@@ -61,6 +75,11 @@ input DeleteManyDisciplinesInput {
   filter: DisciplineDeleteFilter!
 }
 
+input DeleteManyLessonsInput {
+  """Filter to find records to delete"""
+  filter: LessonDeleteFilter!
+}
+
 type DeleteManyResponse {
   """The number of records deleted."""
   deletedCount: Int!
@@ -72,6 +91,11 @@ input DeleteManyStudentsInput {
 }
 
 input DeleteOneDisciplineInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneLessonInput {
   """The id of the record to delete."""
   id: ID!
 }
@@ -174,18 +198,117 @@ input DisciplineUpdateFilter {
   updated_at: DateFieldComparison
 }
 
+type Lesson {
+  created_at: DateTime!
+  description: String!
+  id: String!
+  updated_at: DateTime!
+}
+
+type LessonAggregateGroupBy {
+  created_at: DateTime
+  description: String
+  id: String
+  updated_at: DateTime
+}
+
+type LessonConnection {
+  """Array of nodes."""
+  nodes: [Lesson!]!
+
+  """Paging information"""
+  pageInfo: OffsetPageInfo!
+
+  """Fetch total count of records"""
+  totalCount: Int!
+}
+
+type LessonCountAggregate {
+  created_at: Int
+  description: Int
+  id: Int
+  updated_at: Int
+}
+
+input LessonDeleteFilter {
+  and: [LessonDeleteFilter!]
+  created_at: DateFieldComparison
+  description: StringFieldComparison
+  id: StringFieldComparison
+  or: [LessonDeleteFilter!]
+  updated_at: DateFieldComparison
+}
+
+type LessonDeleteResponse {
+  created_at: DateTime
+  description: String
+  id: String
+  updated_at: DateTime
+}
+
+input LessonFilter {
+  and: [LessonFilter!]
+  created_at: DateFieldComparison
+  description: StringFieldComparison
+  id: StringFieldComparison
+  or: [LessonFilter!]
+  updated_at: DateFieldComparison
+}
+
+type LessonMaxAggregate {
+  created_at: DateTime
+  description: String
+  id: String
+  updated_at: DateTime
+}
+
+type LessonMinAggregate {
+  created_at: DateTime
+  description: String
+  id: String
+  updated_at: DateTime
+}
+
+input LessonSort {
+  direction: SortDirection!
+  field: LessonSortFields!
+  nulls: SortNulls
+}
+
+enum LessonSortFields {
+  created_at
+  description
+  id
+  updated_at
+}
+
+input LessonUpdateFilter {
+  and: [LessonUpdateFilter!]
+  created_at: DateFieldComparison
+  description: StringFieldComparison
+  id: StringFieldComparison
+  or: [LessonUpdateFilter!]
+  updated_at: DateFieldComparison
+}
+
 type Mutation {
   createManyDisciplines(input: CreateManyDisciplinesInput!): [Discipline!]!
+  createManyLessons(input: CreateManyLessonsInput!): [Lesson!]!
   createManyStudents(input: CreateManyStudentsInput!): [Student!]!
   createOneDiscipline(input: CreateOneDisciplineInput!): Discipline!
+  createOneLesson(input: CreateOneLessonInput!): Lesson!
   createOneStudent(input: CreateOneStudentInput!): Student!
   deleteManyDisciplines(input: DeleteManyDisciplinesInput!): DeleteManyResponse!
+  deleteManyLessons(input: DeleteManyLessonsInput!): DeleteManyResponse!
   deleteManyStudents(input: DeleteManyStudentsInput!): DeleteManyResponse!
   deleteOneDiscipline(input: DeleteOneDisciplineInput!): DisciplineDeleteResponse!
+  deleteOneLesson(input: DeleteOneLessonInput!): LessonDeleteResponse!
   deleteOneStudent(input: DeleteOneStudentInput!): StudentDeleteResponse!
   updateManyDisciplines(input: UpdateManyDisciplinesInput!): UpdateManyResponse!
+  updateManyLessons(input: UpdateManyLessonsInput!): UpdateManyResponse!
   updateManyStudents(input: UpdateManyStudentsInput!): UpdateManyResponse!
   updateOneDiscipline(input: UpdateOneDisciplineInput!): Discipline!
+  updateOneLesson(input: UpdateOneLessonInput!): Lesson!
   updateOneStudent(input: UpdateOneStudentInput!): Student!
 }
 
@@ -220,6 +343,20 @@ type Query {
     """Specify to sort results."""
     sorting: [DisciplineSort!]! = []
   ): DisciplineConnection!
+  lesson(
+    """The id of the record to find."""
+    id: ID!
+  ): Lesson
+  lessons(
+    """Specify to filter the records returned."""
+    filter: LessonFilter! = {}
+
+    """Limit or page results."""
+    paging: OffsetPaging! = {limit: 10}
+
+    """Specify to sort results."""
+    sorting: [LessonSort!]! = []
+  ): LessonConnection!
   student(
     """The id of the record to find."""
     id: ID!
@@ -373,12 +510,25 @@ input UpdateDisciplineInput {
   name: String
 }
 
+input UpdateLessonInput {
+  description: String
+  id: String
+}
+
 input UpdateManyDisciplinesInput {
   """Filter used to find fields to update"""
   filter: DisciplineUpdateFilter!
 
   """The update to apply to all records found using the filter"""
   update: UpdateDisciplineInput!
+}
+
+input UpdateManyLessonsInput {
+  """Filter used to find fields to update"""
+  filter: LessonUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateLessonInput!
 }
 
 type UpdateManyResponse {
@@ -400,6 +550,14 @@ input UpdateOneDisciplineInput {
 
   """The update to apply."""
   update: UpdateDisciplineInput!
+}
+
+input UpdateOneLessonInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateLessonInput!
 }
 
 input UpdateOneStudentInput {
