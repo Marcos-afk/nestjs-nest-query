@@ -44,4 +44,4 @@ $ yarn test:cov
 
 # testes manuais com insomnia, importar requisições do arquivo abaixo
 
-[requets](https://github.com/Marcos-afk/nestjs-nest-query/blob/master/requests)
+[requests](https://github.com/Marcos-afk/nestjs-nest-query/blob/master/requests)
