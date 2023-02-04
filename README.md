@@ -39,4 +39,10 @@ $ yarn test:e2e
 
 # test coverage
 $ yarn test:cov
+
+# testes manuais com insomnia, importar requisições do arquivo abaixo
+
+$ [requets](https://github.com/Marcos-afk/nestjs-nest-query/blob/master/requests)
+
+
 ```
